@@ -7,7 +7,7 @@ title: Seldon Configuration
 
 Seldon uses [Zookeeper](http://zookeeper.apache.org/) for real time configuration. It is used to specify all settings needed by the Seldon server as well as offline model creation jobs. Most tasks can be accomplished via the [Seldon CLI](seldon-cli.html). However, not all the advanced functionality is at present exposed via the CLI. This document will give the details of the Zookeeper configuration needed.
 
-## Zookeeper Configration
+## Zookeeper Configuration
 
 The set of available zookeeper configurations settings are shown below.
 
@@ -49,7 +49,7 @@ Seldon needs access to a JDBC compliant datastore that holds the client database
 }
  {% endhighlight %}
 
-The possible values follow the availble configuration parameters for Apache DBCP2. The defaults have been set for Mysql Replication driver settings. You will need to modify the settings for your own setup. The full set of settings and defaults are show below:
+The possible values follow the available configuration parameters for Apache DBCP2. The defaults have been set for Mysql Replication driver settings. You will need to modify the settings for your own setup. The full set of settings and defaults are show below:
 
  {% highlight json %}
 {"dbs":
@@ -102,7 +102,7 @@ As stated, these values can be dynamically changed to allow the API server to ge
  
 ### Recommendation Algorithms<a name="recommender-algorithms"></a>
 
-Zookeeper is also used to store the algorithms chosen to provide recommendations for each client. For example, one client may use matrix factorization where as another may use a clustering algorithm. Now that we have the various concepts defined we can look at how they translate into configuration. A client's algorithms are controlled with JSON stored in a ZooKeeper node hierarchy. Unfortunately this currently has to be inputted manually. Below are some important nodes.
+Zookeeper is also used to store the algorithms chosen to provide recommendations for each client. For example, one client may use matrix factorization where as another may use a clustering algorithm. Now that we have the various concepts defined we can look at how they translate into configuration. Client's algorithms are controlled with JSON stored in a ZooKeeper node hierarchy. Unfortunately this currently has to be inputted manually. Below are some important nodes.
 
  * /config/default_strategy
 
@@ -128,7 +128,7 @@ Zookeeper is also used to store the algorithms chosen to provide recommendations
   }
  {% endhighlight %}
 
- Essentially this is a list of algorithm strategies with a combiner on the end. An algorithm strategy comprises, an algorithm spring bean name ("name" which is the camel case version of the name of the alg class) and optionally a set of includers and/or excluders and optionally some config ("config"). The order of these algorithm strategies is priority order.
+ Essentially this is a list of algorithm strategies with a combiner on the end. An algorithm strategy comprises an algorithm spring bean name ("name" which is the camel case version of the name of the alg class) and optionally a set of includers and/or excluders and optionally some config ("config"). The order of these algorithm strategies is priority order.
 
 For a client specific algorithm strategy add to 
 
@@ -216,7 +216,7 @@ By default user actions are stored in memcache for a short time. This allows us 
  * **addActions** : boolean, whether to add actions into the Redis server from the Seldon server
  * **type** : bean name of action history provider, valid values: redisActionHistory, memcacheActionHistory
 
-Example confguration:
+Example configuration:
 
 
 {% highlight json %}

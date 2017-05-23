@@ -16,7 +16,7 @@ The current integrated models are:
  * [Models created via Apache Spark](spark-models.html)
  * [Models created via Semantic Vectors](semantic-vectors.html)
 
-Confguration is either passed on the command line to the offline jobs or set in zookeeper. 
+Configuration is either passed on the command line to the offline jobs or set in Zookeeper. 
 
 # Offline Data Store
 The Seldon modelling and data manipulation jobs assume a structure for the data storage. This structure allows easy integration into a production environment where models are created periodically, usually each day. The directory structure is of the form
@@ -24,7 +24,7 @@ The Seldon modelling and data manipulation jobs assume a structure for the data 
     seldon-models/${CLIENT}/${MODEL}/${DAY}
  {% endhighlight %}
 	
-e.g. for a matrix_factorization model created for client client1 on 27 Jan 2014 (unix epoch day 16461) would be 
+e.g. for a matrix_factorization model created for client client1 on 27 Jan 2014 (Unix epoch day 16461) would be 
 
  {% highlight bash %}
     seldon-models/client1/matrix_factorization/16461
@@ -65,7 +65,7 @@ s3://seldon-models/client1/matrix-factorization/16461
 
 
 ## Configuration
-Configuration is held in zookeeper as JSON in nodes of the form:
+Configuration is held in Zookeeper as JSON in nodes of the form:
 
 {% highlight bash %}
 /<client>/offline/<model-name>
